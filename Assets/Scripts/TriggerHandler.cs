@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class TriggerHandler : MonoBehaviour
 {
-    private const string BRIDGE_TAG = "Bridge";
     private const string CHEST_TAG = "Chest";
     private const string POTION_TAG = "Potion";
     private const string FIRE_TRIGGER_TAG = "FireTrigger";
@@ -15,12 +14,6 @@ public class TriggerHandler : MonoBehaviour
 
     private void OnTriggerEnter(Collider otherCollider)
     {
-        if (otherCollider.CompareTag(BRIDGE_TAG))
-        {
-            var bridge = otherCollider.GetComponent<Bridge>();
-            bridge.Break();
-        }
-        
         if (otherCollider.CompareTag(CHEST_TAG))
         {
             var chest = otherCollider.GetComponent<Chest>();
