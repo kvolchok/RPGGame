@@ -5731,7 +5731,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3ff2fe40ab040debf38a73d09ffec62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _triggerHandler: {fileID: 195669500087689485}
 --- !u!65 &273645310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25729,19 +25728,6 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &195669500087689485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1644408996080148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ac3bd58fd134b5eb6dc612d2b0501a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _fire: {fileID: 1322167856}
 --- !u!1001 &2419232195835591919
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25826,6 +25812,11 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8248296347996596378, guid: e30ccc62c4433e046af50ce2147d50a5,
+        type: 3}
+      propertyPath: _fire
+      value: 
+      objectReference: {fileID: 1322167856}
     - target: {fileID: 657265358013326921, guid: e30ccc62c4433e046af50ce2147d50a5,
         type: 3}
       propertyPath: m_Enabled
