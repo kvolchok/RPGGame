@@ -5,10 +5,12 @@ public class MovementController : MonoBehaviour
 {
     private NavMeshAgent _navMeshAgent;
     private Vector3 _destination;
+    private Camera _camera;
 
     private void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _camera = Camera.main;
     }
 
     private void Update()
@@ -17,14 +19,13 @@ public class MovementController : MonoBehaviour
         _navMeshAgent.SetDestination(_destination);
         
         // TODO: Получите точку, по которой кликнули мышью и задайте ее вектор в поле _destination.
+        if (!Input.GetMouseButtonDown(0)) return;
         var mousePosition = Input.mousePosition;
-        var ray = Camera.main.ScreenPointToRay(mousePosition);
+        var ray = _camera.ScreenPointToRay(mousePosition);
 
         if (!Physics.Raycast(ray, out var hitInfo)) return;
-        var point = hitInfo.point;
-        if (Input.GetMouseButtonDown(0))
-        {
-            _destination = point;
-        }
+        var targetPoint = hitInfo.point;
+        
+        _destination = targetPoint;
     }
 }
