@@ -15,9 +15,6 @@ TagManager:
   - ChestArmor
   - Weapon
   - Chest
-  - Bridge
-  - Potion
-  - FireTrigger
   layers:
   - Default
   - TransparentFX

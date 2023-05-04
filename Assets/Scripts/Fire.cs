@@ -1,15 +1,13 @@
 using UnityEngine;
 
-public class TriggerHandler : MonoBehaviour
+public class Fire : MonoBehaviour
 {
-    private const string FIRE_TRIGGER_TAG = "FireTrigger";
-
     [SerializeField]
     private GameObject _fire;
-
+    
     private void OnTriggerEnter(Collider otherCollider)
     {
-        if (otherCollider.CompareTag(FIRE_TRIGGER_TAG))
+        if (otherCollider.CompareTag(GlobalConstants.PLAYER_TAG))
         {
             _fire.SetActive(true);
         }
