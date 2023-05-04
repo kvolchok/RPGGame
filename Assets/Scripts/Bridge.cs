@@ -1,13 +1,10 @@
-using System;
+using Player;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class Bridge : MonoBehaviour
 {
-    [SerializeField]
-    private TriggerHandler _triggerHandler;
-    
     private Rigidbody[] _rigidbodies;
     private NavMeshObstacle _navMeshObstacle;
     
@@ -22,18 +19,15 @@ public class Bridge : MonoBehaviour
 
     private void OnTriggerEnter(Collider otherCollider)
     {
-        if (otherCollider.CompareTag(GlobalConstants.PLAYER_TAG))
+        if (!otherCollider.CompareTag(GlobalConstants.PLAYER_TAG)) return;
+        var playerController = otherCollider.GetComponent<PlayerController>();
+        if (!playerController.HasBridgeBreakingProtection)
         {
             Break();
         }
     }
 
-    private void OnEnable()
-    {
-        _triggerHandler.OnPotionPickedUp += DisableBreak;
-    }
-
-    public void Break()
+    private void Break()
     {
         // Вырезаем отверстие в навмеш (чтобы игрок там больше не смог пройти)
         _navMeshObstacle.enabled = true;
@@ -51,16 +45,5 @@ public class Bridge : MonoBehaviour
             // Придаем силу каждому rigidbody.
             rigidbody.AddForce(direction * forceValue);
         }
-    }
-
-    private void DisableBreak()
-    {
-        var collider = GetComponent<Collider>();
-        Destroy(collider);
-    }
-    
-    private void OnDisable()
-    {
-        _triggerHandler.OnPotionPickedUp -= DisableBreak;
     }
 }

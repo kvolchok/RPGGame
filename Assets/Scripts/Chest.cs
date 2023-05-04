@@ -9,7 +9,15 @@ public class Chest : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
-    public void Open()
+    private void OnTriggerEnter(Collider otherCollider)
+    {
+        if (otherCollider.CompareTag(GlobalConstants.PLAYER_TAG))
+        {
+            Open();
+        }
+    }
+
+    private void Open()
     {
         _animator.SetTrigger("open");
     }
